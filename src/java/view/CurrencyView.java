@@ -6,9 +6,9 @@
 package view;
 
 import controller.CurrencyController;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -19,17 +19,16 @@ import model.Currency;
  * @author guuurris
  */
 @Named(value = "currencyView")
-@ApplicationScoped
-public class CurrencyView {
+@SessionScoped
+public class CurrencyView implements Serializable {
     
     @EJB
     private CurrencyController cont;
     
-    private String fromCurrency;
-
-  
+    private Float amount;
 
    
+    private String fromCurrency;
     private String toCurrency;
     
     private float convertedValue;
@@ -51,6 +50,7 @@ public class CurrencyView {
     public CurrencyView(){
         cont = new CurrencyController();
         convertedValue = 0;
+        amount = 10.0F;
     }
     public float getConvertedValue() {
         return convertedValue;
@@ -66,7 +66,7 @@ public class CurrencyView {
      */
     public void convertCurrency(){
  
-       convertedValue =  cont.convertCurrency(fromCurrency, toCurrency);
+       convertedValue =  cont.convertCurrency(amount, fromCurrency, toCurrency);
        
     }
      public void setFromCurrency(String fromCurrency) {
@@ -76,7 +76,10 @@ public class CurrencyView {
     public void setToCurrency(String toCurrency) {
         this.toCurrency = toCurrency;
     }
-    
+     public void setAmount(Float amount) {
+        this.amount = amount;
+    }
+     
       public String getFromCurrency() {
         return fromCurrency;
     }
@@ -84,4 +87,10 @@ public class CurrencyView {
     public String getToCurrency() {
         return toCurrency;
     }
+    
+     public Float getAmount() {
+        return amount;
+    }
+
+   
 }
