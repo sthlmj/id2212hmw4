@@ -8,6 +8,7 @@ package view;
 import controller.CurrencyController;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -18,7 +19,7 @@ import model.Currency;
  * @author guuurris
  */
 @Named(value = "currencyView")
-@RequestScoped
+@ApplicationScoped
 public class CurrencyView {
     
     @EJB
