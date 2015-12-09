@@ -5,30 +5,82 @@
  */
 package view;
 
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import controller.CurrencyController;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import model.Currency;
 
 /**
  *
- * @author joehulden
+ * @author guuurris
  */
-@ManagedBean(name = "CurrencyView")
+@Named(value = "currencyView")
 @RequestScoped
 public class CurrencyView {
+    
+    @EJB
+    private CurrencyController cont;
+    
+    private String fromCurrency;
 
+  
+
+   
+    private String toCurrency;
+    
+    private float convertedValue;
+
+    
+    
+    public String testValue() {
+        return "Hello world";
+    } 
+    
+    
+    
+    public List<Currency> getCurrencies(){
+        
+        return cont.allCurrencies();
+        
+    }
+    
+    public CurrencyView(){
+        cont = new CurrencyController();
+        convertedValue = 0;
+    }
+    public float getConvertedValue() {
+        return convertedValue;
+    }
+
+    private void setConvertedValue(float convertedValue) {
+        this.convertedValue = convertedValue;
+      
+    }
+    
     /**
-     * Creates a new instance of CurrencyView
+     * Function that convert currency
      */
-    
-    public CurrencyView() {
-        
+    public void convertCurrency(){
+ 
+       convertedValue =  cont.convertCurrency(fromCurrency, toCurrency);
+       
+    }
+     public void setFromCurrency(String fromCurrency) {
+        this.fromCurrency = fromCurrency;
+    }
+
+    public void setToCurrency(String toCurrency) {
+        this.toCurrency = toCurrency;
     }
     
-    public String print() {     //testar att skriva ut
-        
-        return "hej world";
+      public String getFromCurrency() {
+        return fromCurrency;
     }
-    
+
+    public String getToCurrency() {
+        return toCurrency;
+    }
 }
