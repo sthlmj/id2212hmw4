@@ -28,9 +28,12 @@ public class CurrencyController {
     }
     
     //TODO make a calculation
-    public float convertCurrency (String from , String to){
+    public float convertCurrency (Float amount ,String from , String to){
         
-        return 1.0f;
+        Currency cFrom = em.find(Currency.class, from);
+        Currency cTo = em.find(Currency.class, to);
+       
+        return amount * (cTo.getConversionValue() / cFrom.getConversionValue()); 
     }
     
     /**

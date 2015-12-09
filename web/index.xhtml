@@ -11,7 +11,7 @@
         <f:view>
         <h:form>
             From:
-            <h:inputText></h:inputText>
+            <h:inputText value="#{currencyView.amount}"></h:inputText>
             <h:selectOneMenu value="#{currencyView.fromCurrency}">
                <c:forEach items="#{currencyView.currencies}" var="currency">
                 <f:selectItem itemValue="#{currency.id}" itemLabel="#{currency.id}" />  
@@ -23,7 +23,7 @@
                 <f:selectItem itemValue="#{currency.id}" itemLabel="#{currency.id}" />  
                 </c:forEach>             
              </h:selectOneMenu>
-            <h:commandButton action="#{currencyView.convertCurrency()}" value="Convert"  />
+            <h:commandButton action="#{currencyView.convertCurrency}" value="Convert"  />
             
         </h:form>
         </f:view>
