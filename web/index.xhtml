@@ -7,7 +7,7 @@
     
     <h:head>
         <style>
-            #mydiv {
+            #converter {
                 position:fixed;
                 top: 50%;
                 left: 50%;
@@ -15,18 +15,26 @@
                 height:18em;
                 margin-top: -9em; /*set to a negative number 1/2 of your height*/
                 margin-left: -15em; /*set to a negative number 1/2 of your width*/
-                border: 1px solid #ccc;
-                background-color: #f3f3f3;
+                background-color: #FFFFFF;
+            }
+            #picture {
+                position:fixed;
+                top: 15%;
+                left: 38%;
+                width:30em;
+                height:18em;
+                margin-top: -9em; /*set to a negative number 1/2 of your height*/
+                margin-left: -15em; /*set to a negative number 1/2 of your width*/
+                background-color: #FFFFFF;
             }
         </style>
         <title>ID2212 Nätverksprogrammering med Java Homework 4</title>
     </h:head>
-    <h:body>  
-        <h:graphicImage library="images" name="superrich.jpg" />
-        <div id="mydiv"> 
+    <h:body>
+        <div id="converter"> 
             <p><b>Welcome to the SUPER RICH exchange market!</b></p>
             <p>Select currency to buy from and pay with</p>
-            <f:view id="mydiv">
+            <f:view id="converter">
         <h:form>
             Buy:
              <h:selectOneMenu value="#{currencyView.toCurrency}">
@@ -47,6 +55,8 @@
         <br/>
         <p>Amount bought: #{currencyView.convertedValue} </p>
         </div>
+        
+        <div id="picture"><h:graphicImage library="images" name="superrich.jpg" /></div>
     </h:body>
 </html>
 
