@@ -24,33 +24,19 @@ public class CurrencyView implements Serializable {
     
     @EJB
     private CurrencyController cont;
-    
     private Float amount;
-
-   
     private String fromCurrency;
     private String toCurrency;
-    
     private float convertedValue;
-
-    
-    
-    public String testValue() {
-        return "Hello world";
-    } 
-    
-    
     
     public List<Currency> getCurrencies(){
-        
         return cont.allCurrencies();
-        
     }
     
     public CurrencyView(){
         cont = new CurrencyController();
         convertedValue = 0;
-        amount = 10.0F;
+        amount = 0.0F;
     }
     public float getConvertedValue() {
         return convertedValue;
@@ -58,14 +44,12 @@ public class CurrencyView implements Serializable {
 
     private void setConvertedValue(float convertedValue) {
         this.convertedValue = convertedValue;
-      
     }
     
     /**
      * Function that convert currency
      */
     public void convertCurrency(){
- 
        convertedValue =  cont.convertCurrency(amount, fromCurrency, toCurrency);
        
     }
@@ -91,6 +75,4 @@ public class CurrencyView implements Serializable {
      public Float getAmount() {
         return amount;
     }
-
-   
 }

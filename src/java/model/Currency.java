@@ -42,5 +42,4 @@ public class Currency implements Serializable {
     public String toString() {
         return "model.Currency[ id=" + currency + " ]";
     }
-    
 }

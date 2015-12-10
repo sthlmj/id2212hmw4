@@ -27,7 +27,6 @@ public class CurrencyController {
         return em;
     }
     
-    //TODO make a calculation
     public float convertCurrency (Float amount ,String from , String to){
         
         Currency cFrom = em.find(Currency.class, from);
@@ -44,5 +43,4 @@ public class CurrencyController {
         List result = em.createQuery("SELECT c FROM Currency c").getResultList();
         return (List<Currency>) result; 
     }
-    
 }
