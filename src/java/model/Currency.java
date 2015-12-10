@@ -6,20 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- *
+ * The currency Entity(db)
  * @author guuurris
  */
 @Entity
 public class Currency implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @Column(name="id")
-    private String  currency;
+    @Column(name = "id")
+    private String currency;
 
     //the ratio value compared to SEK
-    @Column(name="ratio")
+    @Column(name = "ratio")
     private float conversionValue;
 
     public float getConversionValue() {
@@ -29,11 +29,11 @@ public class Currency implements Serializable {
     public void setConversionValue(float conversionValue) {
         this.conversionValue = conversionValue;
     }
-    
+
     public void setCurrency(String currency) {
         this.currency = currency;
     }
-    
+
     public String getId() {
         return currency;
     }
