@@ -10,6 +10,13 @@ import model.Currency;
  * Java Persistence API
  * @author guuurris
  */
+
+/**
+ * A stateless session bean is a type of enterprise bean which is normally used to do independent operations. 
+ * A stateless session bean as per its name does not have any associated client state, but it may preserve its instance state. 
+ * EJB Container normally creates a pool of few stateless bean's objects and use these objects to process client's request. 
+ * Because of pool, instance variable values are not guaranteed to be same across lookups/method calls.
+ */
 @Stateless
 public class CurrencyController {
 
